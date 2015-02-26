@@ -13,6 +13,8 @@ gem 'simplecov'
 gem 'wunderground'
 gem 'twitter'
 gem 'instagram'
+gem 'active_model_serializers', '~> 0.9.3'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug'
