@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GroupsControllerTest < ActionController::TestCase
+class Api::V1::TripsControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

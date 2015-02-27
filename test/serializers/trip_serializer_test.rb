@@ -3,7 +3,7 @@ require 'test_helper'
 class TripSerializerTest < ActiveSupport::TestCase
 
   def sample_trip
-    Trip.create(
+    Trip.new(
                 name: "fun trip",
                 location: "vail",
                 departure_time: 2.months.ago,
@@ -13,7 +13,7 @@ class TripSerializerTest < ActiveSupport::TestCase
   end
 
   def setup
-    sample_trip.users << User.create(
+    sample_trip.users << User.new(
                                       first_name: "bob",
                                       last_name: "smith",
                                       email: "bob@bob.com"
