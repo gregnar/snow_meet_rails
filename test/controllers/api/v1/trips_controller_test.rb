@@ -32,5 +32,15 @@ class Api::V1::TripsControllerTest < ActionController::TestCase
     assert_equal @trip.id, json['trip']['id']
   end
 
+  test "#update" do
+    assert_equal "vail", @trip.location
+    update = { location: "the moon" }.to_json
+    patch(:update, update, id: @trip.id)
+    
+    get :show, id: @trip.id
+
+    assert_equal "the moon", json['trip']['location']
+
+  end
 
 end

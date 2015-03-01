@@ -11,8 +11,13 @@ class Api::V1::TripsController < ApplicationController
     render json: @trip
   end
 
+  def create
+    @trip = Trip.create(decoded_params)
+    render json: @trip
+  end
+
   def update
-    @trip.update_attributes(trip_params)
+    @trip.update_attributes(decoded_params)
     render json: @trip
   end
 
@@ -28,13 +33,8 @@ class Api::V1::TripsController < ApplicationController
     @trip = Trip.find(params[:id])
   end
 
-  def trip_params
-    params.require(:trip).permit(:name,
-                                 :location,
-                                 :departure_time,
-                                 :return_time,
-                                )
+  def decoded_params
+    ActiveSupport::JSON.decode(request.body.read)
   end
-
 
 end
