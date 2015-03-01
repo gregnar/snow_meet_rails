@@ -23,8 +23,8 @@ class TripSerializerTest < ActiveSupport::TestCase
 
   test "a serialized trip has the correct keys" do
     serialized_trip = TripSerializer.new(sample_trip).as_json
-    desired_keys    = [:id, :name, :location, :departure_time, :return_time, :users, :group]
-    assert_equal desired_keys, serialized_trip.symbolize_keys.keys
+    desired_keys    = [:id, :name, :location, :departure_time, :return_time, :user_ids, :group_id]
+    assert_equal desired_keys, serialized_trip[:trip].symbolize_keys.keys
   end
 
 end
