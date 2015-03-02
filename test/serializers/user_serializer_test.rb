@@ -24,10 +24,13 @@ class UserSerializerTest < ActiveSupport::TestCase
     ]
   end
 
+  def difference_between_desired_and_actual_attributes
+    desired_keys - @serialized_user[:user].symbolize_keys.keys
+  end
+
   test "a serialized user has the correct keys" do
-    serialized_user = UserSerializer.new(sample_user).as_json
-    actual_attributes = desired_keys - serialized_user[:user].symbolize_keys.keys
-    assert_equal [], actual_attributes
+    @serialized_user = UserSerializer.new(sample_user).as_json
+    assert_equal [], difference_between_desired_and_actual_attributes
   end
 
 end

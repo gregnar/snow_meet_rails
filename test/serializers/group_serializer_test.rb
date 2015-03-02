@@ -18,10 +18,13 @@ class GroupSerializerTest < ActiveSupport::TestCase
     ]
   end
 
+  def difference_between_actual_and_desired_attributes
+    desired_keys - @serialized_group[:group].symbolize_keys.keys
+  end
+
   test "a serialized group has the correct keys" do
-    serialized_group = GroupSerializer.new(sample_group).as_json
-    actual_attributes = desired_keys - serialized_group[:group].symbolize_keys.keys
-    assert_equal [], actual_attributes
+    @serialized_group = GroupSerializer.new(sample_group).as_json
+    assert_equal [], difference_between_actual_and_desired_attributes
   end
 
 end
