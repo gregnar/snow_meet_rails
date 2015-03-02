@@ -12,19 +12,22 @@ class UserSerializerTest < ActiveSupport::TestCase
             )
   end
 
+  def desired_keys
+    [ :id,
+      :first_name,
+      :last_name,
+      :twitter_name,
+      :insta_name,
+      :email,
+      :group_ids,
+      :rsvp_ids,
+    ]
+  end
 
   test "a serialized user has the correct keys" do
     serialized_user = UserSerializer.new(sample_user).as_json
-    desired_keys    = [:id,
-                       :first_name,
-                       :last_name,
-                       :twitter_name,
-                       :insta_name,
-                       :email,
-                       :group_ids,
-                       :rsvp_ids,
-                       ]
-    assert_equal [], desired_keys - serialized_user[:user].symbolize_keys.keys
+    actual_attributes = desired_keys - serialized_user[:user].symbolize_keys.keys
+    assert_equal [], actual_attributes
   end
 
 end
