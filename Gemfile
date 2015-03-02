@@ -13,7 +13,7 @@ gem 'simplecov'
 gem 'wunderground'
 gem 'twitter'
 gem 'instagram'
-gem 'active_model_serializers', '~> 0.9.3'
+gem 'active_model_serializers', "~> 0.8.0"
 gem 'figaro'
 
 group :development, :test do
@@ -21,6 +21,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'minitest-rails'
+  gem 'database_cleaner'
 end
 
 group :test do

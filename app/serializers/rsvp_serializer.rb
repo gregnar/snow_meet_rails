@@ -1,5 +1,7 @@
 class RsvpSerializer < ActiveModel::Serializer
-  attributes :id
+  embed :ids
+
+  attributes :id, :status
 
   has_one :user
   has_one :trip
