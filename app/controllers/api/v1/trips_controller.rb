@@ -21,7 +21,7 @@ class Api::V1::TripsController < ApplicationController
     render json: @trip
   end
 
-  def delete
+  def destroy
     @trip.destroy
     render json: @trip
   end
