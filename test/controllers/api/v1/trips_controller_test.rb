@@ -8,13 +8,12 @@ class Api::V1::TripsControllerTest < ActionController::TestCase
 
   def setup
     @group = Group.create(name: "cool group")
-    @trip = @group.trips.create(
-                name: "fun trip",
-                location: "vail",
-                departure_time: 2.months.ago,
-                return_time: 1.day.ago,
-                group_id: 1,
-                )
+    @trip  = @group.trips.create( name: "fun trip",
+                                  location: "vail",
+                                  departure_time: 2.months.ago,
+                                  return_time: 1.day.ago,
+                                  group_id: 1,
+                                )
 
     @trip.users << User.create(first_name: "bob", last_name: "smith", email: "bob@bob.com")
   end
@@ -36,11 +35,17 @@ class Api::V1::TripsControllerTest < ActionController::TestCase
     assert_equal "vail", @trip.location
     update = { location: "the moon" }.to_json
     patch(:update, update, id: @trip.id)
-    
+
     get :show, id: @trip.id
 
     assert_equal "the moon", json['trip']['location']
 
+  end
+
+  test "#destroy" do
+    initial_count = Trip.count
+    delete(:destroy, id: @trip.id)
+    assert_operator Trip.count, :<, initial_count
   end
 
 end

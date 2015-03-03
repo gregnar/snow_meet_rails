@@ -1,15 +1,28 @@
 class Api::V1::UsersController < ApplicationController
   before_action :set_user, except: [:index]
+
+  def index
+    @users = User.all
+    render json: @users
+  end
+
   def show
     render json: @user
   end
 
-  def update
-    @user.update_attributes(user_params)
+  def create
+    @user = User.create(decoded_params)
+    render json: @user
   end
 
-  def delete
+  def update
+    @user.update_attributes(decoded_params)
+    render json: @user
+  end
+
+  def destroy
     @user.destroy
+    render json: @user
   end
 
 
@@ -19,13 +32,7 @@ class Api::V1::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def user_params
-    params.require(:user).permit(:first_name,
-                                 :last_name,
-                                 :twitter_name,
-                                 :insta_name,
-                                 :email
-                                )
+  def decoded_params
+    ActiveSupport::JSON.decode(request.body.read)
   end
-
 end
