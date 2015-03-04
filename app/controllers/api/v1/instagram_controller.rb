@@ -1,7 +1,8 @@
 class Api::V1::InstagramController < ApplicationController
 
   def index
-    @instagrams = Instagram.all
+    trip = Trip.find(@trip.id)
+    @instagrams = trip.instagrams
     render json: @instagrams
   end
 end

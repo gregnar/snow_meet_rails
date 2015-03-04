@@ -1,5 +1,5 @@
 class Api::V1::TripsController < ApplicationController
-
+  attr_reader :trip
   before_action :set_trip, except: [:index]
 
   def index
