@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150223212346) do
+ActiveRecord::Schema.define(version: 20150303225246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20150223212346) do
   add_index "groups_users", ["group_id"], name: "index_groups_users_on_group_id", using: :btree
   add_index "groups_users", ["user_id"], name: "index_groups_users_on_user_id", using: :btree
 
+  create_table "instagrams", force: :cascade do |t|
+    t.string   "image_url"
+    t.string   "caption"
+    t.string   "profile_pic"
+    t.string   "user_name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "trip_id"
+    t.string   "time_posted"
+  end
+
   create_table "rsvps", force: :cascade do |t|
     t.integer  "trip_id"
     t.integer  "user_id"
@@ -42,12 +53,13 @@ ActiveRecord::Schema.define(version: 20150223212346) do
 
   create_table "trips", force: :cascade do |t|
     t.string   "name"
-    t.string   "location"
     t.datetime "departure_time"
     t.datetime "return_time"
     t.integer  "group_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "state"
+    t.string   "city"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,6 +72,16 @@ ActiveRecord::Schema.define(version: 20150223212346) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "weathers", force: :cascade do |t|
+    t.string   "conditions"
+    t.string   "image"
+    t.string   "high_temp"
+    t.string   "low_temp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "trip_id"
   end
 
 end

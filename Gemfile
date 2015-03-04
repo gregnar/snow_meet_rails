@@ -12,9 +12,9 @@ gem 'pry'
 gem 'simplecov'
 gem 'wunderground'
 gem 'twitter'
-gem 'instagram'
 gem 'active_model_serializers', "~> 0.8.0"
 gem 'figaro'
+gem 'faraday'
 
 group :development, :test do
   gem 'byebug'
