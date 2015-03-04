@@ -15,6 +15,7 @@ gem 'twitter'
 gem 'instagram'
 gem 'active_model_serializers', "~> 0.8.0"
 gem 'figaro'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug'
