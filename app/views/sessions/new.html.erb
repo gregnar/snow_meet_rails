@@ -1,0 +1,18 @@
+<h1>login fool</h1>
+
+<h2>some form</h2>
+
+<form>
+</form>
+
+
+<%= form_tag("/sessions", method: "post") do %>
+  <%= label_tag(:email, "Enter your email:") %>
+  <%= text_field_tag(:email) %>
+  <%= label_tag(:password, "Enter your password:") %>
+  <%= text_field_tag(:password) %>
+  <%= submit_tag("Log In") %>
+<% end %>
+
+<h4>Not a member?</h4>
+<%= link_to(new_user_path, "Sign up and go get some pow!") %>
