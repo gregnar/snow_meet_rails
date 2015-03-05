@@ -18,10 +18,12 @@ gem 'figaro'
 
 group :development, :test do
   gem 'byebug'
+  gem 'faker'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'minitest-rails'
   gem 'database_cleaner'
+  gem 'rack-cors', :require => 'rack/cors'
 end
 
 group :test do

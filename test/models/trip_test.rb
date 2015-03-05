@@ -14,7 +14,7 @@ class TripTest < ActiveSupport::TestCase
   end
 
   test "#create_rsvp_for_each_user_in_group is called after #create" do
-    @trip = @group.trips.create(name: "great trip", location: "a place")
+    @trip = @group.trips.create(name: "great trip", city: "a place")
     assert_equal 1, @trip.rsvps.count
   end
 
