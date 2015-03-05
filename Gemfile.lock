@@ -40,6 +40,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.7)
     arel (6.0.0)
+    bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     buftok (0.2.0)
@@ -119,6 +120,7 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rack (1.6.0)
+    rack-cors (0.3.1)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.0)
@@ -209,6 +211,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.8.0)
+  bcrypt
   byebug
   coffee-rails (~> 4.1.0)
   database_cleaner
@@ -219,6 +222,7 @@ DEPENDENCIES
   minitest-rails
   pg
   pry
+  rack-cors
   rails (= 4.2.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
