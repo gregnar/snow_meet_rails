@@ -1,6 +1,6 @@
 class Api::V1::GroupsController < ApplicationController
 
-    before_action :set_group, except: [:index]
+    before_action :set_group, except: [:index, :create]
 
     def index
       @groups = Group.all
@@ -12,7 +12,7 @@ class Api::V1::GroupsController < ApplicationController
     end
 
     def create
-      @group = Group.create(decoded_params)
+      @group = Group.create(decoded_params['group'])
       render json: @group
     end
 

@@ -23,6 +23,7 @@ group :development, :test do
   gem 'spring'
   gem 'minitest-rails'
   gem 'database_cleaner'
+  gem 'rack-cors', :require => 'rack/cors'
 end
 
 group :test do
