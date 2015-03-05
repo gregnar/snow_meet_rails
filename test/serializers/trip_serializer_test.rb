@@ -4,7 +4,7 @@ class TripSerializerTest < ActiveSupport::TestCase
 
   def sample_trip
     Trip.new( name: "fun trip",
-              location: "vail",
+              city: "vail",
               departure_time: 2.months.ago,
               return_time: 1.day.ago,
               group_id: 1,
@@ -21,7 +21,7 @@ class TripSerializerTest < ActiveSupport::TestCase
   def desired_keys
     [ :id,
       :name,
-      :location,
+      :city,
       :departure_time,
       :return_time,
       :user_ids,

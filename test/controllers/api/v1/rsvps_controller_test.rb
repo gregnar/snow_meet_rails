@@ -9,7 +9,8 @@ class Api::V1::RsvpsControllerTest < ActionController::TestCase
     def setup
       @group = Group.create(name: "cool group")
       @trip  = @group.trips.create( name: "fun trip",
-                                    location: "vail",
+                                    city: "vail",
+                                    state: "CO",
                                     departure_time: 2.months.ago,
                                     return_time: 1.day.ago,
                                     group_id: 1,
