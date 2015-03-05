@@ -72,6 +72,8 @@ GEM
     equalizer (0.0.9)
     erubis (2.7.0)
     execjs (2.3.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.9.1)
@@ -128,6 +130,7 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rack (1.6.0)
+    rack-cors (0.3.1)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.0)
@@ -226,6 +229,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
+  faker
   figaro
   instagram
   jbuilder (~> 2.0)
@@ -233,6 +237,7 @@ DEPENDENCIES
   minitest-rails
   pg
   pry
+  rack-cors
   rails (= 4.2.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

@@ -1,6 +1,6 @@
 class Api::V1::TripsController < ApplicationController
 
-  before_action :set_trip, except: [:index]
+  before_action :set_trip, except: [:index, :create]
 
   def index
     @trips = Trip.all
@@ -12,7 +12,7 @@ class Api::V1::TripsController < ApplicationController
   end
 
   def create
-    @trip = Trip.create(decoded_params)
+    @trip = Trip.create(decoded_params['trip'])
     render json: @trip
   end
 
