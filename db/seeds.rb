@@ -2,10 +2,10 @@ class Seed
 
 
   def initialize
-    generate_groups_user_table
     generate_groups
     generate_users
     generate_trips
+    generate_groups_user_table
   end
 
   def generate_users
@@ -45,7 +45,7 @@ class Seed
                   state: Faker::Address.state,
                   departure_time: start_date,
                   return_time: end_date,
-                  group_id: Random.rand(50))
+                  group_id: Random.rand(45))
     end
     puts "Trips Generated"
   end
