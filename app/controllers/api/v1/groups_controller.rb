@@ -1,6 +1,7 @@
 class Api::V1::GroupsController < ApplicationController
 
     before_action :set_group, except: [:index, :create]
+    before_action :authenticate_user_from_token!
 
     def index
       @groups = Group.all
