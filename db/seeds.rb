@@ -7,6 +7,7 @@ class Seed
     generate_trips
     generate_groups_user_table
     generate_instagrams
+    create_demo_user
   end
 
   def generate_users
@@ -68,6 +69,17 @@ class Seed
   def get_images
     doc = Nokogiri::HTML(open("http://photography.nationalgeographic.com/photography/photo-of-the-day/archive"))
     doc.xpath("//div[contains(@id, 'search_results')]//a").map {|x| x.attribute("href").value}
+
+  def create_demo_user
+    user = User.create!(twitter_name: "gregnar",
+                        insta_name: Faker::Name.name,
+                        email: "demo@demo.com",
+                        first_name: Faker::Name.first_name,
+                        last_name:  Faker::Name.last_name,
+                        password: "password",
+                        password_confirmation: "password",
+                        )
+    10.times { |i| user.groups << Group.find(i + 1) }
   end
 end
 

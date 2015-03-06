@@ -35,6 +35,7 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
+
   config.middleware.insert_before 0, "Rack::Cors" do
     allow do
       origins(/.*lvh\.me\:4200.*/)

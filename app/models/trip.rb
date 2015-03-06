@@ -1,7 +1,7 @@
 class Trip < ActiveRecord::Base
   belongs_to :group
   has_many :rsvps
-  has_many :instagrams, through: :users
+  has_many :instagrams
   has_many :users, through: :rsvps
 
   after_create :create_rsvp_for_each_user_in_group
