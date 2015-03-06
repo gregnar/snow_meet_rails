@@ -6,6 +6,7 @@ class Seed
     generate_users
     generate_trips
     generate_groups_user_table
+    create_demo_user
   end
 
   def generate_users
@@ -48,6 +49,18 @@ class Seed
                   group_id: Random.rand(45))
     end
     puts "Trips Generated"
+  end
+
+  def create_demo_user
+    user = User.create!(twitter_name: "gregnar",
+                        insta_name: Faker::Name.name,
+                        email: "demo@demo.com",
+                        first_name: Faker::Name.first_name,
+                        last_name:  Faker::Name.last_name,
+                        password: "password",
+                        password_confirmation: "password",
+                        )
+    10.times { |i| user.groups << Group.find(i + 1) }
   end
 end
 
