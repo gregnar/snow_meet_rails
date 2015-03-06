@@ -15,6 +15,8 @@ gem 'twitter'
 gem 'active_model_serializers', "~> 0.8.0"
 gem 'figaro'
 gem 'faraday'
+gem 'nokogiri'
+
 
 group :development, :test do
   gem 'byebug'

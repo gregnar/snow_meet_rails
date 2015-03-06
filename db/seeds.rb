@@ -1,11 +1,12 @@
 class Seed
-
+  require 'open-uri'
 
   def initialize
     generate_groups
     generate_users
     generate_trips
     generate_groups_user_table
+    generate_instagrams
   end
 
   def generate_users
@@ -48,6 +49,25 @@ class Seed
                   group_id: Random.rand(45))
     end
     puts "Trips Generated"
+  end
+
+  def generate_instagrams
+    images     = get_images
+    user_names = User.all.map {|x| x.insta_name}
+    200.times do
+      Instagram.create!(image_url: "http://photography.nationalgeographic.com#{images.sample}",
+                        caption: Faker::Company.bs,
+                        profile_pic: Faker::Company.logo,
+                        user_name: user_names.sample,
+                        trip_id: Random.rand(100),
+                        time_posted: Faker::Time.forward(23, :all).to_i)
+    end
+    puts "Instagrams Generated"
+  end
+
+  def get_images
+    doc = Nokogiri::HTML(open("http://photography.nationalgeographic.com/photography/photo-of-the-day/archive"))
+    doc.xpath("//div[contains(@id, 'search_results')]//a").map {|x| x.attribute("href").value}
   end
 end
 

@@ -58,13 +58,8 @@ ActiveRecord::Schema.define(version: 20150305032105) do
     t.integer  "group_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-<<<<<<< HEAD
-    t.string   "state"
-    t.string   "city"
-=======
     t.string   "city"
     t.string   "state"
->>>>>>> b17a71a9d40bcceb03cd2f418bfbf5719b7ed9d3
   end
 
   create_table "users", force: :cascade do |t|
@@ -77,16 +72,6 @@ ActiveRecord::Schema.define(version: 20150305032105) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-  end
-
-  create_table "weathers", force: :cascade do |t|
-    t.string   "conditions"
-    t.string   "image"
-    t.string   "high_temp"
-    t.string   "low_temp"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "trip_id"
   end
 
 end
