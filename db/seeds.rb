@@ -56,7 +56,7 @@ class Seed
     images     = get_images
     user_names = User.all.map {|x| x.insta_name}
     200.times do
-      Instagram.create!(image_url: "http://photography.nationalgeographic.com#{images.sample}",
+      Instagram.create!(image_url: images.sample,
                         caption: Faker::Company.bs,
                         profile_pic: Faker::Company.logo,
                         user_name: user_names.sample,
@@ -67,8 +67,8 @@ class Seed
   end
 
   def get_images
-    doc = Nokogiri::HTML(open("http://photography.nationalgeographic.com/photography/photo-of-the-day/archive"))
-    doc.xpath("//div[contains(@id, 'search_results')]//a").map {|x| x.attribute("href").value}
+    doc = Nokogiri::HTML(open("http://www.freedigitalphotos.net/images/search.php?search=winter+nature&exq=&cat%5B%5D=photograph&mt=ALL&lc=0&category_opened=0&gal%5B%5D=292&gal%5B%5D=162&gal%5B%5D=158&gal%5B%5D=160&gal%5B%5D=32&gal%5B%5D=313&gal%5B%5D=66&gal%5B%5D=128&gal%5B%5D=300&gal%5B%5D=38&gal%5B%5D=31&gal%5B%5D=40&gal%5B%5D=288&gal%5B%5D=37&gal%5B%5D=42&gal%5B%5D=41&photog_id=0&or%5B%5D=1&or%5B%5D=2&or%5B%5D=3&people%5B%5D=with&people%5B%5D=without"))
+    doc.xpath("//div[contains(@class, 'negative-margin clearfix')]//img").map {|x| x.attribute('src').value}
   end
 
   def create_demo_user
