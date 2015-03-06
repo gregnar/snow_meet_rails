@@ -69,6 +69,7 @@ class Seed
   def get_images
     doc = Nokogiri::HTML(open("http://photography.nationalgeographic.com/photography/photo-of-the-day/archive"))
     doc.xpath("//div[contains(@id, 'search_results')]//a").map {|x| x.attribute("href").value}
+  end
 
   def create_demo_user
     user = User.create!(twitter_name: "gregnar",
