@@ -12,7 +12,7 @@ class Api::V1::GroupsController < ApplicationController
     end
 
     def create
-      @group = Group.create(decoded_params['group'])
+      @group = current_user.groups.create(decoded_params['group'])
       render json: @group
     end
 
