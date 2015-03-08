@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :set_user, except: [:index]
+  before_action :set_user, except: [:index, :create]
 
   def index
     @users = User.all
@@ -11,12 +11,12 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(decoded_params)
+    @user = User.create(decoded_params['user'])
     render json: @user
   end
 
   def update
-    @user.update_attributes(decoded_params)
+    @user.update_attributes(decoded_params['user'])
     render json: @user
   end
 
