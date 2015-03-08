@@ -3,6 +3,8 @@ class Trip < ActiveRecord::Base
   has_many :rsvps
   has_many :users, through: :rsvps
   has_many :tweets
+  has_many :instagrams
+
   after_create :create_rsvp_for_each_user_in_group
 
   def create_rsvp_for_each_user_in_group

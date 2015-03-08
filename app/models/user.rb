@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :users, through: :rsvps
   has_many :groups, through: :groups_users
   has_many :tweets, foreign_key: :user_name, primary_key: :twitter_name
+  has_many :instagrams, foreign_key: :user_name, primary_key: :insta_name
 
   def ensure_authentication_token
     if authentication_token.blank?
