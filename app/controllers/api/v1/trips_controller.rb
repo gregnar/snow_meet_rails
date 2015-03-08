@@ -8,6 +8,7 @@ class Api::V1::TripsController < ApplicationController
   end
 
   def show
+    @trip.update_tweets
     render json: @trip
   end
 

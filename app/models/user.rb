@@ -4,10 +4,11 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :groups_users
-  has_many :groups, through: :groups_users
   has_many :rsvps
+  has_many :groups_users
   has_many :users, through: :rsvps
+  has_many :groups, through: :groups_users
+  has_many :tweets, foreign_key: :user_name, primary_key: :twitter_name
 
   def ensure_authentication_token
     if authentication_token.blank?

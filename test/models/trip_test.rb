@@ -18,4 +18,9 @@ class TripTest < ActiveSupport::TestCase
     assert_equal 1, @trip.rsvps.count
   end
 
+  test "trip tweets get updated" do
+
+
+  end
+
 end
