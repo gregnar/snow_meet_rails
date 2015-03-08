@@ -11,12 +11,10 @@ class Seed
 
   def generate_users
     100.times do
-      User.create!(twitter_name: Faker::Name.name,
-                  insta_name: Faker::Name.name,
-                  email: Faker::Internet.email,
-                  first_name: Faker::Name.first_name,
-                  last_name: Faker::Name.last_name,
-                  password: "password")
+      User.create!( email: Faker::Internet.email,
+                    first_name: Faker::Name.first_name,
+                    last_name: Faker::Name.last_name,
+                    password: "password")
     end
     puts "Users Generated"
   end

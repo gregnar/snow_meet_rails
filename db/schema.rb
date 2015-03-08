@@ -32,17 +32,6 @@ ActiveRecord::Schema.define(version: 20150308185128) do
   add_index "groups_users", ["group_id"], name: "index_groups_users_on_group_id", using: :btree
   add_index "groups_users", ["user_id"], name: "index_groups_users_on_user_id", using: :btree
 
-  create_table "instagrams", force: :cascade do |t|
-    t.string   "image_url"
-    t.string   "caption"
-    t.string   "profile_pic"
-    t.string   "user_name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "trip_id"
-    t.string   "time_posted"
-  end
-
   create_table "rsvps", force: :cascade do |t|
     t.integer  "trip_id"
     t.integer  "user_id"

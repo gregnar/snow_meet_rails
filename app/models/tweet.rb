@@ -2,7 +2,7 @@ class Tweet < ActiveRecord::Base
   belongs_to :trip
   belongs_to :user, foreign_key: :user_name, primary_key: :twitter_name
 
-  validates :tweet_id, uniqueness: true
+  validates :twitter_time, uniqueness: true
 
   def self.create_from_api_object(api_object, trip_id)
     create(
