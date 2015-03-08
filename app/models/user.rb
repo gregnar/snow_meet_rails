@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-
   before_save :ensure_authentication_token
 
   devise :database_authenticatable, :registerable,
@@ -8,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :groups, through: :groups_users
   has_many :rsvps
   has_many :users, through: :rsvps
+  has_many :instagrams, foreign_key: :user_name, primary_key: :insta_name
+
 
   def ensure_authentication_token
     if authentication_token.blank?
@@ -23,5 +24,4 @@ class User < ActiveRecord::Base
       break token unless User.where(authentication_token: token).first
     end
   end
-
 end
