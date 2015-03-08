@@ -7,7 +7,7 @@ class CreateInstagrams < ActiveRecord::Migration
       t.string   :profile_pic
       t.string   :user_name
       t.integer  :trip_id
-      t.string   :time_posted
+      t.datetime :time_posted
 
       t.timestamps null: false
     end

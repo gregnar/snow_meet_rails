@@ -29,4 +29,15 @@ class Trip < ActiveRecord::Base
   def format_time(time)
     time.strftime("%Y-%d-%m")
   end
+
+  def update_instagrams
+    users.each do |user|
+      if user.insta_name.present?
+        new_instagrams = InstagramServices.get_instagram_data_in_range(user.insta_name, departure_time, return_time)
+        Instagram.save_instagrams(new_instagrams, id)
+      end
+
+    end
+
+  end
 end
