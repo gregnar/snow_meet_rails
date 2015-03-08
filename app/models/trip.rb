@@ -36,8 +36,11 @@ class Trip < ActiveRecord::Base
         new_instagrams = InstagramServices.get_instagram_data_in_range(user.insta_name, departure_time, return_time)
         Instagram.save_instagrams(new_instagrams, id)
       end
-
     end
+  end
 
+  def update_social_media
+    update_instagrams
+    update_tweets
   end
 end

@@ -53,7 +53,7 @@ class Seed
 
   def create_demo_user
     user = User.create!(twitter_name: "gregnar",
-                        insta_name: Faker::Name.name,
+                        insta_name: "joerogan",
                         email: "demo@demo.com",
                         first_name: Faker::Name.first_name,
                         last_name:  Faker::Name.last_name,
@@ -68,8 +68,8 @@ class Seed
     group.trips.create!(name: "Fun ski trip!",
                         city: Faker::Address.city,
                         state: Faker::Address.state,
-                        departure_time: Faker::Date.backward(50),
-                        return_time: Faker::Date.forward(365),
+                        departure_time: 5.days.ago,
+                        return_time: 1.year.from_now,
                         group_id: Random.rand(45))
   end
 

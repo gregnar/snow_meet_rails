@@ -8,7 +8,6 @@ class Api::V1::TweetsController < ApplicationController
   end
 
   def show
-    
     render json: @tweet
   end
 

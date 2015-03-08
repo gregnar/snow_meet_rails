@@ -1,7 +1,7 @@
 class Instagram < ActiveRecord::Base
   belongs_to :trip
   belongs_to :user, foreign_key: :user_name, primary_key: :insta_name
-  validates :time_posted, uniqueness: { scope: :user }
+  validates :time_posted, uniqueness: true
 
   def self.save_instagrams(json, trip_id)
     json['data'].each do |data|
