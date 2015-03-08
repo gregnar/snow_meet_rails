@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305032105) do
+ActiveRecord::Schema.define(version: 20150308185128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20150305032105) do
   add_index "groups_users", ["group_id"], name: "index_groups_users_on_group_id", using: :btree
   add_index "groups_users", ["user_id"], name: "index_groups_users_on_user_id", using: :btree
 
+  create_table "instagrams", force: :cascade do |t|
+    t.string   "image_url"
+    t.string   "caption"
+    t.string   "profile_pic"
+    t.string   "user_name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "trip_id"
+    t.string   "time_posted"
+  end
+
   create_table "rsvps", force: :cascade do |t|
     t.integer  "trip_id"
     t.integer  "user_id"
@@ -49,6 +60,16 @@ ActiveRecord::Schema.define(version: 20150305032105) do
     t.datetime "updated_at",     null: false
     t.string   "city"
     t.string   "state"
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.string   "user_name"
+    t.text     "text"
+    t.integer  "trip_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.datetime "twitter_time"
+    t.integer  "tweet_id"
   end
 
   create_table "users", force: :cascade do |t|

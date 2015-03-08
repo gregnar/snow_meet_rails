@@ -18,6 +18,4 @@ class TwitterServices
       tweet.created_at >= start_date && tweet.created_at <= end_date
     end
   end
-
-
 end

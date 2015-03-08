@@ -12,6 +12,7 @@ class Api::V1::TripsController < ApplicationController
   end
 
   def create
+    binding.pry
     @trip = Trip.create(decoded_params['trip'])
     render json: @trip
   end
