@@ -7,6 +7,8 @@ class Seed
     generate_trips
     generate_groups_user_table
     create_demo_user
+    create_demo_group
+    create_demo_trip
   end
 
   def generate_users
@@ -60,6 +62,25 @@ class Seed
                         )
     10.times { |i| user.groups << Group.find(i + 1) }
   end
+
+  def create_demo_trip
+    group = Group.find_by(name: "Super awesome group")
+    group.trips.create!(name: "Fun ski trip!",
+                        city: Faker::Address.city,
+                        state: Faker::Address.state,
+                        departure_time: Faker::Date.backward(50),
+                        return_time: Faker::Date.forward(365),
+                        group_id: Random.rand(45))
+  end
+
+  def create_demo_group
+    User.last.groups.create!(name: "Super awesome group",
+                description: "Fun ski time!")
+  end
+
 end
+
+
+
 
 Seed.new
