@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :groups
       resources :users
       resources :rsvps
+      resources :tweets, only: [:index]
       get :csrf, to: 'csrf#index'
     end
   end

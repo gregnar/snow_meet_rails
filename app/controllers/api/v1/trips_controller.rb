@@ -8,11 +8,11 @@ class Api::V1::TripsController < ApplicationController
   end
 
   def show
+    @trip.update_tweets
     render json: @trip
   end
 
   def create
-    binding.pry
     @trip = Trip.create(decoded_params['trip'])
     render json: @trip
   end

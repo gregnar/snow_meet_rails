@@ -14,7 +14,7 @@ class Trip < ActiveRecord::Base
   def update_tweets
     users.each do |user|
       if user.twitter_name.present?
-        tweets = TwitterServices.get_tweets_in_range(format_user(user), format_time(departure_time), format_time(return_time))
+        tweets = TwitterServices.new.get_tweets_in_range(format_user(user), format_time(departure_time), format_time(return_time))
         Tweet.save_tweets(tweets, id)
       end
     end
