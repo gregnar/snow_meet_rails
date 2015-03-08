@@ -3,6 +3,8 @@ class Trip < ActiveRecord::Base
   has_many :rsvps
   has_many :users, through: :rsvps
   has_many :tweets
+  has_many :instagrams
+
   after_create :create_rsvp_for_each_user_in_group
 
   def create_rsvp_for_each_user_in_group
@@ -26,5 +28,19 @@ class Trip < ActiveRecord::Base
 
   def format_time(time)
     time.strftime("%Y-%d-%m")
+  end
+
+  def update_instagrams
+    users.each do |user|
+      if user.insta_name.present?
+        new_instagrams = InstagramServices.get_instagram_data_in_range(user.insta_name, departure_time, return_time)
+        Instagram.save_instagrams(new_instagrams, id)
+      end
+    end
+  end
+
+  def update_social_media
+    update_instagrams
+    update_tweets
   end
 end
