@@ -26,7 +26,6 @@ class Api::V1::GroupsController < ApplicationController
       render json: @group
     end
 
-
     private
 
     def set_group
@@ -36,5 +35,4 @@ class Api::V1::GroupsController < ApplicationController
     def decoded_params
       ActiveSupport::JSON.decode(request.body.read)
     end
-
 end
