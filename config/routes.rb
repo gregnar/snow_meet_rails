@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :trips
       resources :groups
+      resources :groups_users, only: [:create, :delete]
       resources :users
       resources :rsvps
       resources :instagrams, only: [:index, :show]
